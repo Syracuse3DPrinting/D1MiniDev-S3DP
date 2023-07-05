@@ -1,8 +1,6 @@
 # D1MiniDev-S3DP
 ## Syracuse 3D Printing D1 Mini Dev Board Resources
 
-![PCB Overview]("PCB Overview.png")
-
 ### In this repository:
 - Technical Specifications & Instructions
 - STL Models of Enclosure
