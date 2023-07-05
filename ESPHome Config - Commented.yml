@@ -1,0 +1,115 @@
+#D1MiniDev Sample ESPHome Configuration by Syracuse3DPrinting.com
+# Defines the base configuration for the ESPHome node
+esphome:
+  # Specifies the name of this node within ESPHome - Rename this to your liking
+  name: d1minidev1
+
+# Configures the ESP8266 microcontroller on the board
+esp8266:
+  # Specifies the version of the Arduino framework to use with ESP8266. Note this fastled_clockless Config requries the manually selected framework. Configurations without RGB LED can skip this. 
+  framework:
+    version: 2.7.4
+  # Identifies the board type
+  board: d1_mini
+
+# Defines WiFi configuration
+wifi:
+  # Specifies the WiFi network SSID (network name)
+  ssid: !secret wifi_ssid
+  # Specifies the WiFi network password
+  password: !secret wifi_password
+  # Configures an Access Point (AP) for a fallback hotspot in case normal WiFi fails
+  ap:
+    # Specifies the fallback hotspot SSID
+    ssid: "D1Minidev1 Fallback Hotspot"
+    # Specifies the fallback hotspot password
+    password: "BzVLC0ZzoM9R"
+
+# Enables the Captive Portal feature which is useful during initial setup and debugging
+captive_portal:
+
+# Configures the logger component to display debug information
+logger:
+  # Sets the baud rate to 0 to disable UART logging, so logs are only displayed over WiFi
+  baud_rate: 0
+  
+# Configures the native API component for direct integration with the Home Assistant automation platform
+# This information is created automatically when you commission a new ESPHome Device within Home Assistant. Copy the values from your new device config here.
+api:
+  # Sets an encryption key for secure communication between the node and Home Assistant
+  encryption:
+    key: ""
+
+# Enables Over-The-Air (OTA) updates, allowing firmware updates over WiFi
+# This information is created automatically when you commission a new ESPHome Device within Home Assistant. Copy the values from your new device config here.
+ota:
+  # Sets a password to protect OTA updates
+  password: ""
+
+# Configures the SPI bus used by the max6675 temperature sensor
+spi:
+  # Sets an id for this SPI bus instance
+  id: probe1
+  # Sets the Clock pin to D5
+  clk_pin: D5
+  # Sets the MISO (Master In Slave Out) pin to D6
+  miso_pin: D6
+
+# Temperature sensor using the MAX6675 chip
+sensor:
+  - platform: max6675
+    # Refers to the SPI bus id defined above
+    spi_id: probe1
+    # Sets a name for the temperature sensor
+    name: "D1Mini1 Thermocouple Temperature"
+    # Sets the Chip Select (CS) pin to D8
+    cs_pin: D8
+    # Sets the interval for updating the sensor's value to every 5 seconds
+    update_interval: 5s
+
+# Pushbutton Configuration
+binary_sensor:
+  # Defines a binary sensor connected to pin D4
+  - platform: gpio
+    pin:
+      # Specifies the GPIO pin number connected to the sensor
+      number: D4
+      # Specifies the pin mode as an input with an internal pull-up resistor
+      mode: INPUT_PULLUP
+      # Inverts the binary state (i.e., when the button is pressed, the state is "OFF")
+      inverted: true
+    # Sets a name for the sensor
+    name: "D1 Mini Switch 1"
+
+  # Defines another binary sensor connected to pin D3
+  - platform: gpio
+    pin:
+      number: D3
+      mode: INPUT_PULLUP
+      inverted: true
+    name: "D1 Mini Switch 2"
+
+# RGB LED using the FastLED library for LED strips
+light:
+  - platform: fastled_clockless
+    # Specifies the type of LED chipset used
+    chipset: WS2812B
+    # Specifies the GPIO pin number connected to the LED strip's data input
+    pin: D7
+    # Specifies the number of LEDs in the strip
+    num_leds: 1
+    # Specifies the color order for the LED chip
+    rgb_order: GRB
+    # Sets a name for the light
+    name: "FastLED WS2811 Light"
+    # Defines various effects that can be applied to the LED strip
+    effects:
+      - strobe:
+      - flicker:
+      - addressable_random_twinkle:
+      - addressable_color_wipe:
+      - addressable_scan:
+      - addressable_rainbow:
+      - addressable_twinkle:
+      - addressable_fireworks:
+      - random:

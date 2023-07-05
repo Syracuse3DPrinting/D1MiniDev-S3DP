@@ -1,0 +1,34 @@
+Bill of Materials
+Most parts are optional based on configuration
+
+DC-DC Converter
+	7-28VDCin 5VDC Out 500mA
+	R-78E5.0-0.5
+	https://www.digikey.com/en/products/detail/recom-power/R-78E5-0-0-5/2834904
+
+Power Supply Filtering Capacitors x2
+	10UF 10V X7R 0805
+	CL21B106KPQNNNG
+	https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B106KPQNNNG/3894474
+	
+Push Button Tactile Switch x2
+	B3F-4055
+	https://www.digikey.com/en/products/detail/omron-electronics-inc-emc-div/B3F-4055/31799
+	
+PTC Resettable Fuse
+	0ZCJ0075AF2E
+	750 mA 16V
+	https://www.digikey.com/en/products/detail/bel-fuse-inc/0ZCJ0075AF2E/4156135
+
+RGB Addressable LED
+	COM-16347
+	WS2812B
+	https://www.digikey.com/en/products/detail/sparkfun-electronics/COM-16347/11630204
+	
+6-Pin Molex MiniFit Header
+	0353180620
+	https://www.digikey.com/en/products/detail/molex/0353180620/3185064
+	
+12V Power Input (5.5x2.1MM Barrel Jack)
+	CON-SOCJ-2155
+	https://www.mouser.com/ProductDetail/Gravitech/CON-SOCJ-2155?qs=fkzBJ5HM%252BdCcpvFQyQZHtA%3D%3D

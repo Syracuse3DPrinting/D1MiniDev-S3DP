@@ -1,0 +1,33 @@
+# This automation adjusts the color of a specific light entity (light.fastled_ws2811_light) based on the current value of a sensor (sensor.hvac_delta). If the sensor value is between -5 and 5, the light color will be set to white. If the sensor value is greater than 5, the light color will be set to red. If the sensor value is less than -5, the light color will be set to blue.
+# Automation ID
+- id: '1234567890123'
+  # The name of this automation for easy identification
+  alias: Adjust light color based on HVAC delta
+  # The event that triggers this automation
+  trigger:
+    # The automation is triggered by a change in the state of an entity
+    platform: state
+    # The specific entity that triggers this automation when its state changes
+    entity_id: sensor.hvac_delta
+  # The actions that this automation will perform
+  action:
+    # The service that will be called
+    service: light.turn_on
+    # Specifies the target light entity on which the service will be called
+    target:
+      entity_id: light.fastled_ws2811_light
+    # Additional data passed to the service call
+    data:
+      # Conditional color_name setting based on the current value of the 'sensor.hvac_delta' 
+      color_name: >
+        {% set delta = states('sensor.hvac_delta') | float %}
+        # If the delta is between -5 and 5 (inclusive), set color_name to 'white'
+        {% if delta < 5 and delta > -5 %}
+          white
+        # If the delta is greater than 5, set color_name to 'red'
+        {% elif delta > 5 %}
+          red
+        # If the delta is less than -5, set color_name to 'blue'
+        {% elif delta < -5 %}
+          blue
+        {% endif %}
