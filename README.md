@@ -82,7 +82,7 @@ Most parts are optional based on configuration.
 | 6-Pin Molex MiniFit Header | - | 0353180620 | [DigiKey](https://www.digikey.com/en/products/detail/molex/0353180620/3185064) |
 | 12V Power Input (5.5x2.1MM Barrel Jack) | - | CON-SOCJ-2155 | [Mouser](https://www.mouser.com/ProductDetail/Gravitech/CON-SOCJ-2155?qs=fkzBJ5HM%252BdCcpvFQyQZHtA%3D%3D) |
 | D1 Mini ESP8266 | - | - | [Amazon](https://amzn.to/3rinfvB) |
-
+| MAX6675 Module + K Type Thermocouple | 3-5V M6 | - | [Amazon](https://amzn.to/3rlv4Av) |
 
 ## Issues/Limitations
 
