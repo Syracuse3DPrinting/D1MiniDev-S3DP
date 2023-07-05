@@ -66,3 +66,25 @@ Users can choose between three different formats for the D1MiniDev: a bare PCB f
 **Additional Accessories**
 - Optional 3D Printed Enclosure (Purchasable or DIY Print)
 - Please note that the final assembled size of the device will depend on the chosen components and the use of the optional enclosure.
+
+
+## Bill of Materials
+
+Most parts are optional based on configuration.
+
+| Component | Specs | Part Number | Link |
+| --- | --- | --- | --- |
+| DC-DC Converter | 7-28VDCin 5VDC Out 500mA | R-78E5.0-0.5 | [DigiKey](https://www.digikey.com/en/products/detail/recom-power/R-78E5-0-0-5/2834904) |
+| Power Supply Filtering Capacitors x2 | 10UF 10V X7R 0805 | CL21B106KPQNNNG | [DigiKey](https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B106KPQNNNG/3894474) |
+| Push Button Tactile Switch x2 | - | B3F-4055 | [DigiKey](https://www.digikey.com/en/products/detail/omron-electronics-inc-emc-div/B3F-4055/31799) |
+| PTC Resettable Fuse | 750 mA 16V | 0ZCJ0075AF2E | [DigiKey](https://www.digikey.com/en/products/detail/bel-fuse-inc/0ZCJ0075AF2E/4156135) |
+| RGB Addressable LED | WS2812B | COM-16347 | [DigiKey](https://www.digikey.com/en/products/detail/sparkfun-electronics/COM-16347/11630204) |
+| 6-Pin Molex MiniFit Header | - | 0353180620 | [DigiKey](https://www.digikey.com/en/products/detail/molex/0353180620/3185064) |
+| 12V Power Input (5.5x2.1MM Barrel Jack) | - | CON-SOCJ-2155 | [Mouser](https://www.mouser.com/ProductDetail/Gravitech/CON-SOCJ-2155?qs=fkzBJ5HM%252BdCcpvFQyQZHtA%3D%3D) |
+| D1 Mini ESP8266 | - | - | [Amazon](https://amzn.to/3rinfvB) |
+
+
+## Issues/Limitations
+
+- The silkscreen outline of the ESP8266 is mirrored on v1.0 of the PCB. When assembling follow the assembly pictures instead of using the silkscreen outline for this component.
+- The onboard PTC Fuse is limited to 16V. If using a 24VDC power supply it's recommended to bypass this fuse and use an external fuse.
