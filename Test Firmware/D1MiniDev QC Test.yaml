@@ -1,0 +1,111 @@
+# Define the ESPHome device and settings
+esphome:
+  # Name of the device
+  name: d1minidev1_qc_test
+  # Actions to perform on device boot
+  on_boot:
+    # Priority of the boot actions, lower values execute earlier
+    - priority: -10
+      then:
+        # Turn on the light with the specified id and effect on boot
+        - light.turn_on:
+            id: test_light
+            effect: "Color Wipe"
+
+# Define the ESP8266 board and framework version
+esp8266:
+  framework:
+    version: 2.7.4
+  board: d1_mini
+
+# Configure logger for debug information
+logger:
+
+# SPI interface configuration
+spi:
+  # ID of the SPI interface
+  id: probe1
+  # Clock pin for the SPI interface
+  clk_pin: D5
+  # MISO pin for the SPI interface
+  miso_pin: D6
+
+# Sensor configuration
+sensor:
+  - platform: max6675
+    # ID of the SPI interface to use for the sensor
+    spi_id: probe1
+    # Name of the sensor
+    name: "D1Mini1 Thermocouple Temperature"
+    # Chip Select pin for the sensor
+    cs_pin: D8
+    # Interval to update the sensor reading
+    update_interval: 5s
+
+# Binary sensor configuration
+binary_sensor:
+  # First switch configuration
+  - platform: gpio
+    pin:
+      # GPIO pin number for the switch
+      number: D4
+      # GPIO pin mode
+      mode: INPUT_PULLUP
+      # Invert the switch reading
+      inverted: true
+    name: "D1 Mini Switch 1"
+    on_press:
+      then:
+        # Log a message when the switch is pressed
+        - logger.log: "Switch 1 pressed"
+
+  # Second switch configuration
+  - platform: gpio
+    pin:
+      number: D3
+      mode: INPUT_PULLUP
+      inverted: true
+    name: "D1 Mini Switch 2"
+    on_press:
+      then:
+        - logger.log: "Switch 2 pressed"
+
+# Light configuration
+light:
+  - platform: fastled_clockless
+    # ID of the light
+    id: test_light
+    # Chipset of the LED strip
+    chipset: WS2812B
+    # GPIO pin connected to the LED strip
+    pin: D7
+    # Number of LEDs in the strip
+    num_leds: 1
+    # Order of the RGB channels in the LED strip
+    rgb_order: GRB
+    # Name of the light
+    name: "FastLED WS2811 Light"
+    # Define the light effects
+    effects:
+      # Color wipe effect configuration
+      - addressable_color_wipe:
+          # Name of the effect
+          name: "Color Wipe"
+          # Colors to cycle in the color wipe effect
+          colors:
+            - red: 100%
+              green: 0%
+              blue: 0%
+              num_leds: 1
+            - red: 0%
+              green: 100%
+              blue: 0%
+              num_leds: 1
+            - red: 0%
+              green: 0%
+              blue: 100%
+              num_leds: 1
+          # Time interval to add an LED to the wipe
+          add_led_interval: 100ms
+          # Direction of the color wipe
+          reverse: False
