@@ -1,0 +1,7 @@
+template:
+  - sensor:
+    - name: "HVAC Delta"
+      unit_of_measurement: "°F" # Or any other unit your sensors use
+      state: >
+        {{ (states('sensor.d1mini1_thermocouple_temperature') | float) - 
+           (states('sensor.d1minidevslave1_d1mini1slave_thermocouple_temperature') | float) }}
