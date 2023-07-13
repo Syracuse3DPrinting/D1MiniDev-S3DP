@@ -1,4 +1,6 @@
 # This automation adjusts the color of a specific light entity (light.fastled_ws2811_light) based on the current value of a sensor (sensor.hvac_delta). If the sensor value is between -5 and 5, the light color will be set to white. If the sensor value is greater than 5, the light color will be set to red. If the sensor value is less than -5, the light color will be set to blue.
+# Add this to automations.yaml - Make sure automation ID is unique
+# Template sensor sensor.hvac_delta must already be created separately
 # Automation ID
 - id: '1234567890123'
   # The name of this automation for easy identification
