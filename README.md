@@ -88,3 +88,5 @@ Most parts are optional based on configuration.
 
 - The silkscreen outline of the ESP8266 is mirrored on v1.0 of the PCB. When assembling follow the assembly pictures instead of using the silkscreen outline for this component.
 - The onboard PTC Fuse is limited to 16V. If using a 24VDC power supply it's recommended to bypass this fuse and use an external fuse.
+- Some D1Mini clones may have issues with the Windows CH340 Driver. If you are unable to connect to the serial device via USB to PC you may need to roll back your drivers.
+  - Here is a known working driver: https://web.archive.org/web/20211129002033/http://www.wch-ic.com/downloads/CH341SER_EXE.html
