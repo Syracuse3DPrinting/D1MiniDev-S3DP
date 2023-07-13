@@ -66,6 +66,13 @@ sensor:
     cs_pin: D8
     # Sets the interval for updating the sensor's value to every 5 seconds
     update_interval: 5s
+    # Optional Calibrate Linear Function - Uncomment for use
+    # In this example this would correct the thermocouple reading 2° high consistently throughout the range
+    # See ESPHome Sensor Component documentation for more options
+    #filters:
+    #  - calibrate_linear:
+    #      - 0.0 -> -2.0
+    #      - 100.0 -> 98.0
 
 # Pushbutton Configuration
 binary_sensor:
