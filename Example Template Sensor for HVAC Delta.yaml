@@ -1,3 +1,5 @@
+# Template Sensor for measuring difference between two temperature measurements
+# Add to configuration.yaml
 template:
   - sensor:
     - name: "HVAC Delta"
