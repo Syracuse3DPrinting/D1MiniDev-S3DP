@@ -1,4 +1,3 @@
-#Updated 2.19.2024 - Changed to match new framework
 # Define the ESPHome device and settings
 esphome:
   # Name of the device
@@ -16,7 +15,7 @@ esphome:
 # Define the ESP8266 board and framework version
 esp8266:
   framework:
-    version: recommended
+    version: 2.7.4
   board: d1_mini
 
 # Configure logger for debug information
@@ -42,13 +41,6 @@ sensor:
     cs_pin: D8
     # Interval to update the sensor reading
     update_interval: 5s
-    # Optional Calibrate Linear Function
-    # In this example this would correct the thermocouple reading 2° high consistently throughout the range
-    # See ESPHome Sensor Component documentation for more options
-    filters:
-      - calibrate_linear:
-          - 0.0 -> -2.0
-          - 100.0 -> 98.0
 
 # Binary sensor configuration
 binary_sensor:
@@ -78,27 +70,22 @@ binary_sensor:
       then:
         - logger.log: "Switch 2 pressed"
 
-external_components:
-  - source: github://pr#4257
-    components: [fastled]
-    refresh: always
-
-# Defines a light using the FastLED library for LED strips
+# Light configuration
 light:
-  - platform: fastled
+  - platform: fastled_clockless
     # ID of the light
     id: test_light
-    # Specifies the type of LED chipset used
+    # Chipset of the LED strip
     chipset: WS2812B
-    # Specifies the GPIO pin number connected to the LED strip's data input
-    data_pin: D7
-    # Specifies the number of LEDs in the strip
+    # GPIO pin connected to the LED strip
+    pin: D7
+    # Number of LEDs in the strip
     num_leds: 1
-    # Specifies the color order for the LED chip
+    # Order of the RGB channels in the LED strip
     rgb_order: GRB
-    # Sets a name for the light
-    name: "FastLED WS2811 Light2"
-    # Defines various effects that can be applied to the LED strip
+    # Name of the light
+    name: "FastLED WS2811 Light"
+    # Define the light effects
     effects:
       # Color wipe effect configuration
       - addressable_color_wipe:

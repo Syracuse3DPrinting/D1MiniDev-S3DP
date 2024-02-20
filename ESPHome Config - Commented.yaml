@@ -1,5 +1,6 @@
 #D1MiniDev Sample ESPHome Configuration by Syracuse3DPrinting.com
 # Defines the base configuration for the ESPHome node
+# Updated 02.2024 to work with newer compiler. Fixes issues on update. Uses FastLED 
 esphome:
   # Specifies the name of this node within ESPHome - Rename this to your liking
   name: d1minidev1
@@ -8,7 +9,7 @@ esphome:
 esp8266:
   # Specifies the version of the Arduino framework to use with ESP8266. Note this fastled_clockless Config requries the manually selected framework. Configurations without RGB LED can skip this. 
   framework:
-    version: 2.7.4
+    version: recommended
   # Identifies the board type
   board: d1_mini
 
@@ -96,13 +97,18 @@ binary_sensor:
       inverted: true
     name: "D1 Mini Switch 2"
 
+external_components:
+  - source: github://pr#4257
+    components: [fastled]
+    refresh: always
+
 # RGB LED using the FastLED library for LED strips
 light:
-  - platform: fastled_clockless
+  - platform: fastled
     # Specifies the type of LED chipset used
     chipset: WS2812B
     # Specifies the GPIO pin number connected to the LED strip's data input
-    pin: D7
+    data_pin: D7
     # Specifies the number of LEDs in the strip
     num_leds: 1
     # Specifies the color order for the LED chip
